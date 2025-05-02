@@ -1,18 +1,11 @@
-import base64
-import traceback
+
 from fastapi import FastAPI, File, UploadFile, HTTPException
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-import pytesseract
-from transformers import PegasusTokenizer, PegasusForConditionalGeneration, RobertaTokenizerFast
-import torch
 import io
 import onnxruntime as ort
 import numpy as np
 from PIL import Image
-import docx
-import pdfplumber
 # Initialize FastAPI
 app = FastAPI()
 
