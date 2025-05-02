@@ -1,5 +1,0 @@
-fastapi
-uvicorn
-onnxruntime
-pillow
-python-multipart
