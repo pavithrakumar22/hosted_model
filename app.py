@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -6,6 +5,8 @@ import io
 import onnxruntime as ort
 import numpy as np
 from PIL import Image
+import os
+
 # Initialize FastAPI
 app = FastAPI()
 
@@ -49,3 +50,8 @@ async def predict(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ---------- ENTRY POINT FOR UVICORN ----------
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
